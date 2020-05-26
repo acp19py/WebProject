@@ -8,23 +8,27 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/homepage', function(req, res, next) {
-  res.render('homepage');
+  res.render('homepage',{title:'Animal Adoption'});
+});
+
+router.get('/search_result', function(req, res, next) {
+  res.render('search_result',{title:'Search Result'});
 });
 
 router.get('/create_animal', function(req, res, next) {
-  res.render('create_animal');
+  res.render('create_animal',{title:'Animal Adoption'});
 });
 
-router.get('/animal_display', function(req, res, next) {
-  res.render('animal_display');
+router.get('/animal_detail', function(req, res, next) {
+  res.render('animal_detail',{title:'Animal Adoption'});
 });
 
 router.get('/thankyou_page', function(req, res, next) {
-  res.render('thankyou_page');
+  res.render('thankyou_page',{title:'Animal Adoption'});
 });
 
 router.get('/adoption_form', function(req, res, next) {
-  res.render('adoption_form');
+  res.render('adoption_form',{title:'Animal Adoption'});
 });
 
 module.exports = router;

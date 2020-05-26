@@ -6,4 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+router.get('/homepage', function(req, res, next) {
+  res.render('homepage');
+});
+
+
+
 module.exports = router;

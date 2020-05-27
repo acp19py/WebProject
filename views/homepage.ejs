@@ -9,20 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homepage">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Dogs</a>
+                <a class="nav-link" href="/dogs">Dogs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cats</a>
+                <a class="nav-link" href="/cats">Cats</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="/create_animal">Release New Animal</a>
+                    <a class="dropdown-item" href="#">Sign up</a>
+                    <a class="dropdown-item" href="#">Log in</a>
                 </div>
             </li>
         </ul>
@@ -31,30 +31,43 @@
 <div class="main" style="margin-top: 3.5em;">
     <div class="title">
         <h2>Welcome to animal adoption!</h2>
-        <p>Find animal you that you want to adopt:</p>
-        <div class="input-group">
-            <input type="text" class="form-control input-lg">
-            <span class="input-group-addon btn btn-primary">Search</span>
-        </div>
-        <p>e.g. You can enter: 'British Shorthair','white cat','Dog in Sheffield'...</p>
+        <p>Find animals that you want to adopt:<br>
+            (Enter the preference you like or keep empty)</p>
+        <form onsubmit="onSubmit()">
+                <div class="form-group col-md-4" style="padding: 0">
+                    <label for="AnimalType">Animal Type</label>
+                    <input type="text" class="form-control" name="AnimalType" id="AnimalType">
+                </div>
+            <div class="form-group col-md-4" style="padding: 0">
+                <label for="AnimalColor">Animal Color</label>
+                <input type="text" class="form-control" name="AnimalColor" id="AnimalColor">
+            </div>
+            <div class="form-group col-md-4" style="padding: 0">
+                <label for="AnimalGender">Animal Gender</label>
+                <input type="text" class="form-control" name="AnimalGender" id="AnimalGender">
+            </div>
+                <div class="form-group col-md-4" style="padding: 0">
+                    <label for="AnimalLocation">Location</label>
+                    <input type="text" class="form-control" name="AnimalLocation" id="AnimalLocation">
+                </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div id="results" style="margin-top:30px"></div>
     </div>
     <div class="fig1">
-        <img class="figure-img" src="/images/kitten1.jpeg" alt="a kitten">
+        <img class="figure-img" src="/images/cat1.jpg" alt="a kitten" style="margin-bottom: 0">
     </div>
     <div class="fig2">
-        <img class="figure-img" src="/images/kitten2.jpeg" alt="a kitten">
+        <img class="figure-img" src="/images/cat2.jpg" alt="a kitten">
     </div>
     <div class="fig3">
-        <img class="figure-img" src="/images/kitten3.jpeg" alt="a kitten">
+        <img class="figure-img" src="/images/dog1.jpg" alt="a dog">
     </div>
     <div class="fig4">
-        <img class="figure-img" src="/images/kitten4.jpeg" alt="a kitten">
+        <img class="figure-img" src="/images/cat3.jpg" alt="a kitten">
     </div>
     <div class="fig5">
-        <img class="figure-img" src="/images/kitten5.jpeg" alt="a kitten">
-    </div>
-    <div class="fig6">
-        <img class="figure-img" src="/images/kitten6.jpeg" alt="a kitten">
+        <img class="figure-img" src="/images/dog2.jpg" alt="a dog" style="margin-bottom: 0">
     </div>
     <div class="text2">
         <h2>About us</h2>
@@ -62,5 +75,42 @@
         <a href="#" class="info-link">Learn more...</a>
     </div>
 </div>
+<script>
+    function sendAjaxQuery(url, data) {
+        console.log(data);
+        $.ajax({
+            url: url ,
+            data: data,
+            dataType: 'json',
+            type: 'POST',
+            success: function (dataR) {
+// no need to JSON parse the result, as we are using
+// dataType:json, so JQuery knows it and unpacks the
+// object for us before returning it
+                var ret = dataR;
+// in order to have the object printed by alert
+// we need to JSON stringify the object
 
+                window.location.href='/search_result?userInput='+JSON.stringify(ret);
+
+            },
+            error: function (xhr, status, error) {
+
+                alert('Error: ' + error.message);
+            }
+        });
+    }
+
+function onSubmit() {
+var formArray= $("form").serializeArray();
+var data={};
+for (index in formArray){
+data[formArray[index].name]= formArray[index].value.toLowerCase();
+}
+console.log(data);
+// const data = JSON.stringify($(this).serializeArray());
+sendAjaxQuery('/homepage', data);
+event.preventDefault();
+}
+</script>
 <%- include('footer') %>

@@ -8,11 +8,11 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/homepage">Home <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="/dogs">Dogs</a>
+                <a class="nav-link" href="/homepage">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/dogs">Dogs <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cats">Cats</a>
@@ -28,25 +28,24 @@
         </ul>
     </div>
 </nav>
-<div id="page-wrapper"  style="margin-top: 3.5em;">
+<div id="page-wrapper" style="margin-top: 3.5em;">
     <% if(animals.length>0){ %>
-    <h1 style="color:#e2e2e2">Find animal list:</h1>
+        <h1 style="color:#e2e2e2">All dogs list:</h1>
         <div id="wrapper">
-    <% for(let i=0; i< animals.length; i++) {%>
-        <div class="card" style="margin: 2em">
-            <br>
-            <img src="/images/cat1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><%= animals[i].Type %></h5>
-                <p class="card-text"><%= animals[i].Gender %></p>
-                <a href="#" class="btn btn-primary">See More Details</a>
+        <% for(let i=0; i< animals.length; i++) {%>
+            <div class="card" style="margin: 2em">
+                <br>
+                <img src="/images/dog1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><%= animals[i].Type %></h5>
+                    <p class="card-text"><%= animals[i].Gender %></p>
+                    <a href="#" class="btn btn-primary">See More Details</a>
+                </div>
             </div>
+            <% }%>
         </div>
-    <% }%>
-        </div>
-        <%}else{ %>
+    <%}else{ %>
         <h1 style="color:#e2e2e2">No result, Click <a href="/homepage" class="btn btn-primary">Back</a> to return the home page.</h1>
-        <% } %>
-
+    <% } %>
 </div>
 <%- include('footer') %>

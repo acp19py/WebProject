@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var animal = require('../controllers/animal_adoption');
+var animal = require('../controllers/animals');
 
 
 /* GET home page. */
@@ -8,14 +8,28 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
 router.get('/homepage', function(req, res, next) {
   res.render('homepage',{title:'Animal Adoption'});
+});
 
+router.post('/homepage', function(req, res, next) {
+  animal.searchAnimal(req,res);
 });
 
 router.get('/search_result', function(req, res, next) {
-  res.render('search_result',{title:'Search Result'});
+  animal.searchResult(req,res);
+});
+
+router.get('/create_animal', function(req, res, next) {
+  res.render('create_animal',{title:'Animal Adoption'});
+});
+
+router.get('/cats', function(req, res, next) {
+  animal.listCats(req,res);
+});
+
+router.get('/dogs', function(req, res, next) {
+  animal.listDogs(req,res);
 });
 
 router.get('/create_animal', function(req, res, next) {

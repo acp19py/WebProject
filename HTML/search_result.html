@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Animal Adoption</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../public/stylesheets/CSS/style.css">
+    <link rel="stylesheet" href="../public/stylesheets/style.css">
     <link href="../public/stylesheets/bootstrap.css" rel="stylesheet">
 </head>
 
@@ -43,7 +43,7 @@
 </nav>
 <div id="page-wrapper" style="margin-top: 3.5em;">
 <h1 style="color: whitesmoke"> Find animal list:</h1>
-<div class="list">
+<div id="wrapper">
     <div class="animal">
         <div class="rest_image">
             <img src="../public/images/pizza.jpeg" style="border:0;left:0px;position:relative;top:0px" alt="" height="90" width="90">
@@ -63,26 +63,14 @@
 
 
     </div>
-    <div class="animal">
-
-
-        <div class="rest_image">
-            <img src="../public/images/pizza.jpeg" style="border:0;left:0px;position:relative;top:0px" alt="" height="90" width="90">
+    <div class="card" style="width: 20rem;">
+        <br>
+        <img src="/images/cat1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><%= animals[i].Type %></h5>
+            <p class="card-text"><%= animals[i].Gender %></p>
+            <a href="#" class="btn btn-primary">See More Details</a>
         </div>
-        <div class="animal_name">
-            <a href="http://www.pizzaexpress.com">
-                <span>Pizza Express</span>
-            </a>
-        </div>
-        <div class="rest_cost">
-            <span>Cost: Medium</span>
-        </div>
-        <div class="rest_address"><span>Unit 3, 483 Ecclesall Road, Sheffield</span></div>
-        <div class="rest_desc"><span>Chain pizzeria, family-friendly.</span>
-        </div>
-
-
-
     </div>
     <div class="animal">
 

@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/homepage', function(req, res, next) {
   res.render('homepage',{title:'Animal Adoption'});
+
 });
 
 router.get('/search_result', function(req, res, next) {

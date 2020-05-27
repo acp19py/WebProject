@@ -4,22 +4,21 @@ var mongoose = require('mongoose');
 
 //The URL which will be queried. Run "mongod.exe" for this to connect
 //var url = 'mongodb://localhost:27017/test';
-var mongoDB = 'mongodb+srv://user1:45vduJLy32NrJ3pN@cluster0-epzou.mongodb.net/test?retryWrites=true&w=majority/animaladoption';
-
+var mongoDB = 'mongodb+srv://user1:45vduJLy32NrJ3pN@cluster0-epzou.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.Promise = global.Promise;
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB,{useNewUrlParser:true,useUnifiedTopology:true,dbName:'animaladoption'});
 var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 
 //  MORE GENERAL WAY WOULD BE TO CALL:
-try {
-    var connection = mongoose.createConnection(mongoDB);
-    console.log("connection to mongodb worked!");
-}catch (e) {
-console.log('error in db connection: ' +e.message)
-}
+// try {
+//     var connection = mongoose.createConnection(mongoDB);
+//     console.log("connection to mongodb worked!");
+// }catch (e) {
+// console.log('error in db connection: ' +e.message)
+// }
 
 // WHICH WOULD ALLOW MULTIPLE CONNECTIONS

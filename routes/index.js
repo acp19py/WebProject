@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var animal = require('../controllers/animal_adoption');
+var adoptionforms = require('../controllers/animal_adoption')
 
 
 /* GET home page. */
@@ -36,8 +37,20 @@ router.get('/animal_detail', function(req, res, next) {
 });
 
 router.get('/thankyou_page', function(req, res, next) {
-  res.render('thankyou_page',{title:'Animal Adoption'});
+  const id = "5ecab49aa1995244a9f980a8";
+  Promise.all([
+    adoptionforms.getForms(id),
+  ])
+      .then(function (result) {
+        const adoptionforms = result[0];
+        //console.log(animals),
+        res.render('thankyou_page',{title:'Animal Adoption',adoptionforms:adoptionforms},
+        );
+      })
+
 });
+
+
 
 router.get('/adoption_form', function(req, res, next) {
   res.render('adoption_form',{title:'Animal Adoption'});

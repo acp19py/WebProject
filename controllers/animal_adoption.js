@@ -7,8 +7,23 @@ const adoptionforms = mongo.adoptionforms;
 var path = require('path');
 
 
-    animals.find()
+animals.find()
         .exec()
         .then(function (result) {
             console.log(result)
-        })
+        });
+
+module.exports = {
+
+    getOneUser : function getOneUser() {
+
+        return animals
+            .find()
+            .exec();
+
+    }
+
+}
+
+
+

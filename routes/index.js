@@ -23,7 +23,16 @@ router.get('/create_animal', function(req, res, next) {
 });
 
 router.get('/animal_detail', function(req, res, next) {
-  res.render('animal_detail',{title:'Animal Adoption'});
+  Promise.all([
+      animal.getOneUser(),
+  ])
+      .then(function (result) {
+          const animals = result[0][0];
+          //console.log(animals),
+          res.render('animal_detail',{title:'Animal Adoption',animals:animals},
+          );
+      })
+
 });
 
 router.get('/thankyou_page', function(req, res, next) {
@@ -33,5 +42,8 @@ router.get('/thankyou_page', function(req, res, next) {
 router.get('/adoption_form', function(req, res, next) {
   res.render('adoption_form',{title:'Animal Adoption'});
 });
+
+
+
 
 module.exports = router;

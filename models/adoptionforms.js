@@ -1,3 +1,5 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 const adoptionformSchema = new Schema({
     UserID:{type: Schema.Types.ObjectId,ref:'users'},
     AnimalID:{type:Schema.Types.ObjectId,ref:'animals'},
@@ -8,6 +10,7 @@ const adoptionformSchema = new Schema({
     AdoptReason: String,
     Age: Number,
     Income: Number,
+    Name:String,
 });
 
 const adoptionforms = mongoose.model('adoptionforms',adoptionformSchema);

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var animal = require('../controllers/animals');
+var adoptionforms = require('../controllers/adoptionforms');
 
 
 /* GET home page. */
@@ -46,6 +47,9 @@ router.get('/thankyou_page', function(req, res, next) {
 
 router.get('/adoption_form', function(req, res, next) {
   res.render('adoption_form',{title:'Animal Adoption'});
+});
+router.post('/adoption_form', function(req, res) {
+    adoptionforms.create(req,res);
 });
 
 module.exports = router;

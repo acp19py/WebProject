@@ -31,3 +31,20 @@ exports.create = function (req, res) {
         // console.log(adoptionForms._id)
     });
 };
+
+/*
+* According to the Id that is returned bu Ajax,get the name from database
+* */
+exports.listAnimal = function (req, res) {
+    //const id = req.query.id;
+    const id = "5ecabd7c54274d69684e1347";
+    animals.find({_id:id}, function (err, animals) {
+        if (err) {
+            return res.send(500, err);
+        }
+        res.render('animal_detail', {
+            title: "Here is the animal detail",
+            animals: animals[0]
+        });
+    });
+};

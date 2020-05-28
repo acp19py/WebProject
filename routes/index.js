@@ -43,7 +43,7 @@ router.post('/create_animal', function(req, res) {
 });
 
 router.get('/animal_detail', function(req, res, next) {
-  res.render('animal_detail',{title:'Animal Adoption'});
+  create_animal.listAnimal(req,res);
 });
 
 router.get('/thankyou_page', function(req, res,next) {

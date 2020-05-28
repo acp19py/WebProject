@@ -22,6 +22,7 @@ exports.create = function (req, res) {
             res.status(500).send('Invalid data!');
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(adoptionForms));
+        // console.log(adoptionForms._id)
     });
 };
 

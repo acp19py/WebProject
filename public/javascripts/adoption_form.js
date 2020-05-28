@@ -14,8 +14,9 @@ console.log(data);
             // we need to JSON stringify the object
 
             // document.getElementById('results').innerHTML= JSON.stringify(ret);
-            JSON.stringify(ret);
-            window.location.href='/thankyou_page?id='+JSON.stringify(ret._id);
+
+            // console.log(JSON.stringify(ret))
+            window.location.href='/thankyou_page?id='+ret._id;
         },
         error: function (xhr, status, error) {
 

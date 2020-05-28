@@ -41,8 +41,8 @@ router.get('/animal_detail', function(req, res, next) {
   res.render('animal_detail',{title:'Animal Adoption'});
 });
 
-router.get('/thankyou_page', function(req, res, next) {
-  res.render('thankyou_page',{title:'Animal Adoption'});
+router.get('/thankyou_page', function(req, res, ) {
+  adoptionforms.list(req,res);
 });
 
 router.get('/adoption_form', function(req, res, next) {

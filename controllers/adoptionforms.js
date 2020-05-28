@@ -25,3 +25,14 @@ exports.create = function (req, res) {
     });
 };
 
+exports.list = function (req, res) {
+    adoptionforms.find({}, 'Name Address', function (err, adoptionforms) {
+        if (err) {
+            return res.send(500, err);
+        }
+        res.render('list', {
+            title: "Here all all the available data",
+            data: adoptionforms
+        });
+    });
+};

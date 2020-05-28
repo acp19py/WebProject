@@ -22,14 +22,14 @@ console.log(data);
 }
 
 function onSubmit() {
-    var formArray= $("form").serializeArray();
+    var formArray= $("xform").serializeArray();
     var data={};
     for (index in formArray){
         data[formArray[index].name]= formArray[index].value;
     }
     console.log(data);
     // const data = JSON.stringify($(this).serializeArray());
-    sendAjaxQuery('/index', data);
+    sendAjaxQuery('/adoption_form', data);
     event.preventDefault();
 }
 

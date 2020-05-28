@@ -37,10 +37,10 @@ exports.listUsers = function (req, res) {
     });
 };
 
-
-adoptionforms.find({_id:"5ecab88f54274d69684e1343"})
-    .then(function (result){
-        console.log(result)
-    })
+//
+// adoptionforms.find({_id:"5ecab88f54274d69684e1343"})
+//     .then(function (result){
+//         console.log(result)
+//     })
 
 

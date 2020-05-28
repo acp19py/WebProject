@@ -15,6 +15,7 @@ console.log(data);
 
             // document.getElementById('results').innerHTML= JSON.stringify(ret);
             JSON.stringify(ret);
+            window.location.href='/thankyou_page?id='+JSON.stringify(ret._id);
         },
         error: function (xhr, status, error) {
 

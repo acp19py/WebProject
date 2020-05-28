@@ -26,7 +26,8 @@ exports.create = function (req, res) {
 };
 
 exports.listUsers = function (req, res) {
-    adoptionforms.find({_id:"5ecab88f54274d69684e1343"}, function (err, adoptionforms) {
+    const id = req.query.id
+    adoptionforms.find({_id:id}, function (err, adoptionforms) {
         if (err) {
             return res.send(500, err);
         }

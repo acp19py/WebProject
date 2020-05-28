@@ -26,14 +26,21 @@ exports.create = function (req, res) {
 };
 
 exports.listUsers = function (req, res) {
-    adoptionforms.find({}, 'Name Location', function (err, adoptionforms) {
+    adoptionforms.find({_id:"5ecab88f54274d69684e1343"}, function (err, adoptionforms) {
         if (err) {
             return res.send(500, err);
         }
         res.render('thankyou_page', {
             title: "Here all all the available data",
-            data: adoptionforms
+            adoptionforms: adoptionforms
         });
     });
 };
+
+
+adoptionforms.find({_id:"5ecab88f54274d69684e1343"})
+    .then(function (result){
+        console.log(result)
+    })
+
 

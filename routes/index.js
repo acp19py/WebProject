@@ -41,8 +41,22 @@ router.get('/animal_detail', function(req, res, next) {
   res.render('animal_detail',{title:'Animal Adoption'});
 });
 
-router.get('/thankyou_page', function(req, res,next) {
-  adoptionforms.listUsers(req,res);
+// router.get('/thankyou_page', function(req, res,next) {
+//   adoptionforms.listUsers(req,res);
+// });
+router.get('/thankyou_page', function(req, res, next) {
+  res.render('thankyou_page',{title:'Animal Adoption'});
+  const id = "5ecab49aa1995244a9f980a8";
+  Promise.all([
+    adoptionforms.getForms(id),
+  ])
+      .then(function (result) {
+        const adoptionforms = result[0];
+        //console.log(animals),
+        res.render('thankyou_page',{title:'Animal Adoption',adoptionforms:adoptionforms},
+        );
+      })
+
 });
 
 router.get('/adoption_form', function(req, res, next) {

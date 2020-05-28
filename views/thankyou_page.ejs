@@ -35,18 +35,9 @@
         <h3>Here is your form information</h3>
         <br>
     </div>
-        <ul>
 
-            <% for(var i=0; i<adoptionforms.length; i++) {%>
-                <li>
-                    <label style="font-size: x-large">Your Name</label>
-                    <span><%= adoptionforms[i].Name %></span>
-                    <label style="font-size: x-large">Your Address</label>
-                    <span><%= adoptionforms[i].Location %></span>
-                </li>
-            <% } %>
-        </ul>
-
+    <div><label style="font-size: x-large">Your Name</label>
+        <div><label style="font-size: x-large">Your Name<%= adoptionforms.UserID.Name%></label>
 
 
     <div class="fig1">

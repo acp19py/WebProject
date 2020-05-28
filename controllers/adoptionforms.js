@@ -32,15 +32,15 @@ exports.listUsers = function (req, res) {
         }
         res.render('thankyou_page', {
             title: "Here all all the available data",
-            adoptionforms: adoptionforms
+            adoptionforms: adoptionforms[0]
         });
     });
 };
 
-//
+
 // adoptionforms.find({_id:"5ecab88f54274d69684e1343"})
 //     .then(function (result){
-//         console.log(result)
+//         console.log(result[0].Name)
 //     })
-
+//
 

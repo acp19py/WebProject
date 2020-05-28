@@ -29,17 +29,26 @@
     </div>
 </nav>
 <div class="main" style="margin-top: 3.5em;">
-    <div class="title">
+    <div class="adoptionforms">
         <h2>Thank you for your purchasing</h2>
         <br>
         <h3>Here is your form information</h3>
         <br>
-        <div><label style="font-size: x-large">Your Name<%= adoptionform.UserID.Name%></label>
-            <input disabled style="border: 30px" type="text"></div>
-        <div><label style="font-size: x-large">Your Address</label>
-            <input disabled type="text"></div>
-
     </div>
+        <ul>
+
+            <% for(var i=0; i<adoptionforms.length; i++) {%>
+                <li>
+                    <label style="font-size: x-large">Your Name</label>
+                    <span><%= adoptionforms[i].Name %></span>
+                    <label style="font-size: x-large">Your Address</label>
+                    <span><%= adoptionforms[i].Location %></span>
+                </li>
+            <% } %>
+        </ul>
+
+
+
     <div class="fig1">
         <img class="figure-img" src="/images/cat1.jpg" alt="a kitten" style="margin-bottom: 0">
     </div>

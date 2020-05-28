@@ -7,6 +7,7 @@ var path = require('path');
 exports.create = function (req, res) {
     var userData = req.body;
     var adoptionForms = new adoptionforms({
+
         Name: userData.Name,
         Age: userData.Age,
         Job: userData.Job,
@@ -25,14 +26,15 @@ exports.create = function (req, res) {
     });
 };
 
-exports.list = function (req, res) {
-    adoptionforms.find({}, 'Name Address', function (err, adoptionforms) {
+exports.listUsers = function (req, res) {
+    adoptionforms.find({}, 'Name Location', function (err, adoptionforms) {
         if (err) {
             return res.send(500, err);
         }
-        res.render('list', {
+        res.render('thankyou_page', {
             title: "Here all all the available data",
             data: adoptionforms
         });
     });
 };
+

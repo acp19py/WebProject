@@ -22,7 +22,7 @@ console.log(data);
 }
 
 function onSubmit() {
-    var formArray= $("xform").serializeArray();
+    var formArray= $("form").serializeArray();
     var data={};
     for (index in formArray){
         data[formArray[index].name]= formArray[index].value;

@@ -3,7 +3,11 @@ var req = require('request');
 const adoptionforms = require('../models/adoptionforms');
 var path = require('path');
 
-
+/**
+*   write date to Adoptionform database
+*   Data is edited by user input,Browser send request using JSON data
+*
+* */
 exports.create = function (req, res) {
     var userData = req.body;
     var adoptionForms = new adoptionforms({
@@ -25,7 +29,9 @@ exports.create = function (req, res) {
         // console.log(adoptionForms._id)
     });
 };
-
+/*
+* According to the Id that is returned bu Ajax,get the name from database
+* */
 exports.listUsers = function (req, res) {
     const id = req.query.id
     adoptionforms.find({_id:id}, function (err, adoptionforms) {

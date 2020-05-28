@@ -1,3 +1,7 @@
+/**
+*   The function is transforming data from browser input and output
+ *
+ */
 function sendAjaxQuery(url, data) {
 console.log(data);
     $.ajax({

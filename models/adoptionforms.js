@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
+/**
+*   Define the format of the data for MongoDb database
+*/
 const adoptionformSchema = new Schema({
     UserID:{type: Schema.Types.ObjectId,ref:'users'},
     AnimalID:{type:Schema.Types.ObjectId,ref:'animals'},

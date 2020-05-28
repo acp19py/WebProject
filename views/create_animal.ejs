@@ -38,50 +38,46 @@
         <!-- /.card-header -->
         <!-- form start -->
         <div class="container">
-            <form role="form">
+            <form id="form" onsubmit="onSubmit()">
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Animal ID</label>
-                        <input type="text" class="form-control" placeholder="Animal ID">
-                    </div>
-                    <div class="form-group">
                         <label>Animal Type</label>
-                        <input type="text" class="form-control" placeholder="Animal Type">
+                        <input type="text" id="Type" name="Type" class="form-control" placeholder="Animal Type">
                     </div>
                     <div class="form-group">
                         <label>Animal Gender</label><br>
-                        <select>
+                        <select id="Gender" name="Gender">
                             <option value="male">male</option>
                             <option value="female">female</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Animal Kind</label>
-                        <input type="text" class="form-control" placeholder="Animal Kind">
+                        <input type="text" id="Kind" name="Kind" class="form-control" placeholder="Animal Kind">
                     </div>
                     <div class="form-group">
                         <label>Animal Color</label>
-                        <input type="text" class="form-control" placeholder="Animal Color">
+                        <input type="text" id="Color" name="Color" class="form-control" placeholder="Animal Color">
                     </div>
                     <div class="form-group">
                         <label>Animal Age</label>
-                        <input type="text" class="form-control" placeholder="Animal Age">
+                        <input type="text" id="Age" name="Age" class="form-control" placeholder="Animal Age">
                     </div>
                     <div class="form-group">
                         <label>Location</label>
-                        <input type="text" class="form-control" placeholder="London">
+                        <input type="text" id="Location" name="Location" class="form-control" placeholder="London">
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                        <input type="text" class="form-control" placeholder="Adopted">
+                        <input type="text" id="Status" name="Status" class="form-control" placeholder="Adopted">
                     </div>
                     <div class="form-group">
                         <label>Vaccine</label>
-                        <input type="text" class="form-control" placeholder="No">
+                        <input type="text" id="Vaccine" name="Vaccine" class="form-control" placeholder="No">
                     </div>
                     <div class="form-group">
                         <label>Animal Description</label>
-                        <textarea class="form-control" rows="5" id="description"></textarea>
+                        <textarea class="form-control" name="Description" rows="5" id="Description"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -104,7 +100,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
                 </div>
             </form>
         </div>
@@ -112,3 +108,4 @@
 </div>
 <br>
 <%- include('footer') %>
+<script src="/javascripts/create_animal.js"></script>

@@ -27,25 +27,15 @@ exports.create = function (req, res) {
     });
 };
 
-// exports.listUsers = function (req, res) {
-//     adoptionforms.find({}, 'Name Location', function (err, adoptionforms) {
-//         if (err) {
-//             return res.send(500, err);
-//         }
-//         res.render('thankyou_page', {
-//             title: "Here all all the available data",
-//             data: adoptionforms
-//         });
-//     });
-// };
-module.exports = {
-
-    getForms : function getForms(id) {
-        return adoptionforms
-            .findOne({_id:id})
-            .populate("UserID")
-            .exec();
-    }
-
-}
+exports.listUsers = function (req, res) {
+    adoptionforms.find({}, 'Name Location', function (err, adoptionforms) {
+        if (err) {
+            return res.send(500, err);
+        }
+        res.render('thankyou_page', {
+            title: "Here all all the available data",
+            data: adoptionforms
+        });
+    });
+};
 

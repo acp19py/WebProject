@@ -7,16 +7,14 @@ var path = require('path');
 exports.create = function (req, res) {
     var userData = req.body;
     var adoptionForms = new adoptionforms({
-
         Name: userData.Name,
         Age: userData.Age,
         Job: userData.Job,
         Location: userData.Location,
         Experience: userData.Experience,
-        Status: userData.Status,
+        Status: 'pending',
         Income: userData.Income,
         AdoptReason: userData.AdoptReason
-
     });
 
     adoptionForms.save(function (err, results) {

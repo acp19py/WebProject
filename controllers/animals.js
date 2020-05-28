@@ -3,6 +3,8 @@ var req = require('request');
 const animals = require('../models/animals');
 var path = require('path');
 
+
+
 exports.searchResult = function (req, res) {
     const userInput = req.query.userInput;
     const searchData = JSON.parse(userInput)

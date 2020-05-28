@@ -16,13 +16,14 @@ exports.create = function (req, res) {
         Status: userData.Status,
         Income: userData.Income,
         AdoptReason: userData.AdoptReason
+
     });
 
     adoptionForms.save(function (err, results) {
         if (err)
             res.status(500).send('Invalid data!');
         res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(adoptionforms));
+        res.send(JSON.stringify(adoptionForms));
     });
 };
 

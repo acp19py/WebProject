@@ -17,9 +17,10 @@ const animalSchema = new Schema({
     Age: Number,
     Location: String,
     Status: String,
-    Vaccine: Boolean,
+    Vaccine: String,
     Description: String,
     Comment:[commentSchema],
+    Image:String
 });
 
 const animals = mongoose.model('animals',animalSchema);

@@ -270,16 +270,16 @@ exports.listDogs = function (req,res) {
 exports.create = function (req, res) {
     var animalData = req.body;
     var animalForm = new animals({
-
         Type: animalData.Type,
         Gender: animalData.Gender,
-        Kind: animalData.Kind,
-        Color: animalData.Color,
+        Kind: animalData.Kind.toLowerCase(),
+        Color: animalData.Color.toLowerCase(),
         Age: animalData.Age,
-        Location: animalData.Location,
-        Status: animalData.Status,
+        Location: animalData.Location.toLowerCase(),
+        Status: 'no',
         Description: animalData.Description,
-
+        Vaccine:animalData.Vaccine,
+        Image:req.file.path
     });
 
     animalForm.save(function (err, results) {

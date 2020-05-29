@@ -42,7 +42,9 @@
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle"
-                             src="images/cat1.jpg"
+                             <%const path = animals.Image%>
+                                <% const imagePath = path.substring(6,path.length)%>
+                             src="<%= imagePath %>"
                              alt="Animal picture">
                     </div>
 
@@ -134,12 +136,8 @@
 
                     <strong>Vaccine</strong>
 
-                    <p class="text-muted">
-                        <% if(animals.Vaccine){ %>
-                            Yes
-                        <% }else{ %>
-                            No
-                        <% } %>
+                    <p class="text-muted" style="text-transform:capitalize;">
+                        <%= animals.Vaccine %>
                     </p>
 
                     <hr>

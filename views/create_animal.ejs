@@ -38,70 +38,73 @@
         <!-- /.card-header -->
         <!-- form start -->
         <div class="container">
-            <form id="form" onsubmit="onSubmit()">
+            <form id="xForm" onsubmit="onSubmit()" enctype="multipart/form-data" method="POST">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Animal Type</label>
-                        <input type="text" id="Type" name="Type" class="form-control" placeholder="Animal Type">
+                        <select class="form-control col-md-2" id="Type"  name="Type">
+                            <option value="cat">Cat</option>
+                            <option value="dog">Dog</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Animal Gender</label><br>
-                        <select id="Gender" name="Gender">
+                        <select class="form-control col-md-2" id="Gender"  name="Gender">
                             <option value="male">male</option>
                             <option value="female">female</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Animal Kind</label>
-                        <input type="text" id="Kind" name="Kind" class="form-control" placeholder="Animal Kind">
+                        <input type="text" id="Kind" name="Kind" class="form-control" required="required" placeholder="Animal Kind">
                     </div>
                     <div class="form-group">
                         <label>Animal Color</label>
-                        <input type="text" id="Color" name="Color" class="form-control" placeholder="Animal Color">
+                        <input type="text" id="Color" name="Color" class="form-control" required="required" placeholder="Animal Color">
                     </div>
                     <div class="form-group">
                         <label>Animal Age</label>
-                        <input type="text" id="Age" name="Age" class="form-control" placeholder="Animal Age">
+                        <input type="number" id="Age" name="Age" class="form-control" required="required" placeholder="Animal Age">
                     </div>
                     <div class="form-group">
                         <label>Location</label>
-                        <input type="text" id="Location" name="Location" class="form-control" placeholder="London">
+                        <input type="text" id="Location" name="Location" class="form-control" required="required" placeholder="Animal Location">
                     </div>
                     <div class="form-group">
-                        <label>Status</label>
-                        <input type="text" id="Status" name="Status" class="form-control" placeholder="Adopted">
+                        <label>Vaccine</label><br>
+                        <select class="form-control col-md-2" id="Vaccine"  name="Vaccine">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Animal Description</label>
-                        <textarea class="form-control" name="Description" rows="5" id="Description"></textarea>
+                        <textarea class="form-control" name="Description" rows="3" required="required" id="Description"></textarea>
                     </div>
-
                     <div class="form-group">
-                        <label>Image Upload</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label for="myImage">Image Upload</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                             </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="">Upload</span>
+                            <div class="custom-file">
+                                <input onchange="showFilename(this.files[0])" type="file" class="custom-file-input" id="myImage" name="myImage" accept="image/*" required aria-describedby="inputGroupFileAddon01">
+                                <label id="filename_label" class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
                         </div>
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
+                    <button type="submit" class="btn btn-primary float-right" value="Submit">Submit</button>
+                    <br>
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
-                </div>
             </form>
+<br>
+            <div id="results" style="margin-top:30px"></div>
         </div>
     </div>
 </div>
 <br>
-<%- include('footer') %>
 <script src="/javascripts/create_animal.js"></script>
+<%- include('footer') %>
+

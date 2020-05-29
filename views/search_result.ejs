@@ -35,7 +35,9 @@
     <% for(let i=0; i< animals.length; i++) {%>
         <div class="card" style="margin: 2em">
             <br>
-            <img src="/images/cat1.jpg" class="card-img-top" alt="...">
+            <% const path = animals[i].Image %>
+            <% const imagePath = path.substring(6,path.length) %>
+            <img src="<%= imagePath %>" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title"><%= animals[i].Type %></h5>
                 <p class="card-text"><%= animals[i].Gender %></p>

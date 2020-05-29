@@ -3,25 +3,22 @@
  *
  */
 function sendAjaxQuery(url, data) {
-    //console.log(data);
     $.ajax({
         url: url ,
         data: data,
         dataType: 'json',
         type: 'POST',
+        processData: false,
+        contentType: false,
         success: function (dataR) {
             // no need to JSON parse the result, as we are using
             // dataType:json, so JQuery knows it and unpacks the
             // object for us before returning it
-            //var ret = dataR;
+            var ret = dataR;
             // in order to have the object printed by alert
             // we need to JSON stringify the object
+            window.location.href='/animal_detail?id='+ret._id;
 
-            // document.getElementById('results').innerHTML= JSON.stringify(ret);
-
-            // console.log(JSON.stringify(ret))
-            //window.location.href='/thankyou_page?id='+ret._id;
-            window.alert("Create animal successfully!")
         },
         error: function (xhr, status, error) {
 
@@ -31,14 +28,16 @@ function sendAjaxQuery(url, data) {
 }
 
 function onSubmit() {
-    var formArray= $("form").serializeArray();
-    var data={};
-    for (index in formArray){
-        data[formArray[index].name]= formArray[index].value;
-    }
-    console.log(data);
-    // const data = JSON.stringify($(this).serializeArray());
-    sendAjaxQuery('/create_animal', data);
     event.preventDefault();
+    event.stopImmediatePropagation();
+    var myForm = document.getElementById('xForm');
+    var formData = new FormData(myForm);
+    sendAjaxQuery('/create_animal', formData);
+    window.alert("Release successfully!")
+    return false;
 }
 
+
+function showFilename(file){
+    $("#filename_label").html(file.name);
+}

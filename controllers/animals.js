@@ -270,6 +270,7 @@ exports.listDogs = function (req,res) {
 exports.create = function (req, res) {
     var animalData = req.body;
     var animalForm = new animals({
+
         Type: animalData.Type,
         Gender: animalData.Gender,
         Kind: animalData.Kind.toLowerCase(),

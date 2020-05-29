@@ -20,6 +20,7 @@ const animalSchema = new Schema({
     Vaccine: Boolean,
     Description: String,
     Comment:[commentSchema],
+    //Img: String,
 });
 
 const animals = mongoose.model('animals',animalSchema);

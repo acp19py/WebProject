@@ -279,6 +279,7 @@ exports.create = function (req, res) {
         Location: animalData.Location,
         Status: animalData.Status,
         Description: animalData.Description,
+        //img: req.file.path
 
     });
 

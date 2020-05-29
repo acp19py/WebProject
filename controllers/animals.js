@@ -1,6 +1,7 @@
 var bodyParser = require("body-parser");
 var reqest = require('request');
-const animals = require('../models/animals');
+const animals = require('../models/animals').animals;
+const comments = require('../models/animals').comment;
 var path = require('path');
 
 
@@ -337,24 +338,23 @@ exports.listAnimal = function (req, res) {
 
 /*
 * Add comment
-
+*/
 
 exports.addComment = function (req,res) {
+    const id = req.query.id;
     var commentData = req.body;
     var date = new Date();
-    var commentForm = new Comment({
-
-        Content: commentData.Content,
+    let comment = new comments({
+        Name: 'Test_User',
+        Content: commentData.Comment,
         Date: date,
-
     });
-
-    commentForm.save(function (err, results) {
+    const newComment = animals.findOneAndUpdate({_id:id},{$push: {Comment:comment}});
+    newComment.then(animals.find({_id:id},function(err,animals) {
         if (err)
             res.status(500).send('Invalid data!');
         res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(commentForm));
-        // console.log(adoptionForms._id)
-    });
+        res.send(JSON.stringify(animals));
+    }))
+
 };
-*/

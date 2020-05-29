@@ -29,15 +29,15 @@ function sendAjaxQuery(url, data) {
             // no need to JSON parse the result, as we are using
             // dataType:json, so JQuery knows it and unpacks the
             // object for us before returning it
-            //var ret = dataR;
+            var ret = dataR;
             // in order to have the object printed by alert
             // we need to JSON stringify the object
 
-            // document.getElementById('results').innerHTML= JSON.stringify(ret);
+            window.location.reload();
 
             // console.log(JSON.stringify(ret))
             //window.location.href='/thankyou_page?id='+ret._id;
-            window.alert("Modify animal successfully!")
+            //window.alert("Modify animal successfully!")
         },
         error: function (xhr, status, error) {
 
@@ -47,6 +47,8 @@ function sendAjaxQuery(url, data) {
 }
 
 function onModify() {
+    const url = window.location.href;
+    const id = url.substring(url.lastIndexOf('?') + 1, url.length);
     var formArray= $("form").serializeArray();
     var data={};
     for (index in formArray){
@@ -54,9 +56,23 @@ function onModify() {
     }
     console.log(data);
     // const data = JSON.stringify($(this).serializeArray());
-    sendAjaxQuery('/animal_detail', data);
+    sendAjaxQuery('/animal_detail/edit?id='+id, data);
     event.preventDefault();
 }
+
+function onSubmit() {
+    console.log(window.location.href)
+    const url = window.location.href;
+    const id = url.substring(url.lastIndexOf('?') + 1, url.length);
+    var formArray= $("form").serializeArray();
+    var data={};
+    for (index in formArray){
+        data[formArray[index].name]= formArray[index].value;
+    }
+    sendAjaxQuery('/animal_detail?'+id,data);
+    event.preventDefault();
+}
+
 
 
 

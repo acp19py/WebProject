@@ -166,42 +166,33 @@
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <div class="tab-content">
-                        <div class="active tab-pane" id="activity">
+                        <div class="tab-pane active" id="activity">
                             <hr>
-                            <!-- Post -->
-                            <div class="post">
-                                <div class="user-block">
-                                        <span class="username">
-                                          <a href="#">Mike</a>
-                                        </span>
-                                    <span class="description"> commented - 7:30 PM today</span>
+                            <%if(animals.Comment.length>0){%>
+                            <%for(let i = 0;i<animals.Comment.length;i++){%>
+                            <div class="card border-dark mb-3" style="max-width: 100%;">
+                                <div class="card-header"><%= animals.Comment[i].Name %></div>
+                                <div class="card-body text-dark">
+                                    <h5 class="card-title"><%= animals.Comment[i].Content %></h5>
+                                    <p class="card-text float-right">commented - <%= animals.Comment[i].Date.toISOString().replace(/T.*/,' ')+animals.Comment[i].Date.toLocaleTimeString().replace(/ G.*/,"") %></p>
                                 </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    This dog is so cute. How could I adopt it?
-                                    <span class="float-right">
-                                  <a data-toggle="collapse" href="#collapseExample" class="btn btn-info"
-                                     style="margin-top: -2em" role="button" aria-expanded="false"
-                                     aria-controls="collapseExample">
-                                    Response
-                                  </a>
-                                  <div class="collapse" id="collapseExample">
-                                  <!--<form>
-                                  <div class="form-group">
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                      <br>
-                                      <button class="btn btn-primary float-right">Submit</button>
-                                  </div>
-                                  </form>-->
-                                  </div>
-                                  </span>
-                                </p>
-
-
-
                             </div>
-                            <!-- /.post -->
+                            <%}}else{%>
+                                <div class="alert alert-info" role="alert">
+                                   No comments yet, be the first person to add comment!
+                                </div>
+                            <%}%>
 
+                            <!-- Post -->
+                            <form id="form" onsubmit="onSubmit()">
+                                <div class="form-group">
+                                    <textarea class="form-control" style="width: 100%" id="Comment" name="Comment" rows="3" placeholder="Add new comment"></textarea>
+                                    <br>
+                                    <button  type="submit" value="Submit" class="btn btn-primary float-right">Submit</button>
+                                </div>
+                            </form>
+
+                            <div id="results" style="margin-top:30px"></div>
                         </div>
 
                         <div class="tab-pane" id="modify">

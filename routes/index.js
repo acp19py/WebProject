@@ -60,8 +60,12 @@ router.post('/create_animal',upload.single('myImage'), function(req, res) {
 router.get('/animal_detail', function(req, res, next) {
   animal.listAnimal(req,res);
 });
-router.post('/animal_detail', function(req, res) {
+router.post('/animal_detail/edit', function(req, res) {
   animal.update(req,res);
+});
+
+router.post('/animal_detail', function(req, res) {
+  animal.addComment(req,res);
 });
 
 router.get('/thankyou_page', function(req, res,next) {
@@ -71,6 +75,7 @@ router.get('/thankyou_page', function(req, res,next) {
 router.get('/adoption_form', function(req, res, next) {
   res.render('adoption_form',{title:'Animal Adoption'});
 });
+
 router.post('/adoption_form', function(req, res) {
     adoptionforms.create(req,res);
 });

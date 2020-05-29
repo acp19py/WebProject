@@ -167,6 +167,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
+                            <hr>
                             <!-- Post -->
                             <div class="post">
                                 <div class="user-block">
@@ -185,68 +186,80 @@
                                     Response
                                   </a>
                                   <div class="collapse" id="collapseExample">
-                                  <form>
+                                  <!--<form>
                                   <div class="form-group">
                                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                       <br>
                                       <button class="btn btn-primary float-right">Submit</button>
                                   </div>
-                                  </form>
+                                  </form>-->
                                   </div>
                                   </span>
                                 </p>
+
+
+
                             </div>
                             <!-- /.post -->
+
                         </div>
 
                         <div class="tab-pane" id="modify">
-                            <form role="form">
+                            <form id="form" onsubmit="onModify()">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Animal ID</label>
-                                        <input type="text" class="form-control" placeholder="Animal ID">
+                                        <input type="text" id="animalID" name="animalID" class="form-control" placeholder="Animal ID" value="<%=animals._id %>" disabled="true">
                                     </div>
                                     <div class="form-group">
                                         <label>Animal Type</label>
-                                        <input type="text" class="form-control" placeholder="Animal Type">
+                                        <input type="text" id="Type" name="Type" class="form-control" placeholder="Animal Type" value="<%=animals.Type %>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Animal Gender</label>
-                                        <select>
+                                        <label>Animal Gender</label><br>
+                                        <select id="Gender" name="Gender" value="<%=animals.Gender %>">
                                             <option value="male">male</option>
                                             <option value="female">female</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Animal Kind</label>
-                                        <input type="text" class="form-control" placeholder="Animal Kind">
+                                        <input type="text" id="Kind" name="Kind" class="form-control" placeholder="Animal Kind" value="<%=animals.Kind %>">
                                     </div>
                                     <div class="form-group">
                                         <label>Animal Color</label>
-                                        <input type="text" class="form-control" placeholder="Animal Color">
+                                        <input type="text" id="Color" name="Color" class="form-control" placeholder="Animal Color" value="<%=animals.Color %>">
                                     </div>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <label>Animal Age</label>
-                                        <input type="text" class="form-control" placeholder="Animal Age">
-                                    </div>
+                                        <input type="text" id="Age" name="Age" class="form-control" placeholder="1" value="<%=animals.Age %>">
+                                    </div>-->
                                     <div class="form-group">
                                         <label>Location</label>
-                                        <input type="text" class="form-control" placeholder="London">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        <input type="text" class="form-control" placeholder="Adopted">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Vaccine</label>
-                                        <input type="text" class="form-control" placeholder="No">
+                                        <input type="text" id="Location" name="Location" class="form-control" placeholder="London" value="<%=animals.Location%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Animal Description</label>
-                                        <textarea class="form-control" rows="5" id="description"></textarea>
+                                        <textarea class="form-control" name="Description" rows="5" id="Description" value="<%=animals.Description %>"></textarea>
                                     </div>
 
-                                    <!-- /.tab-pane -->
+                                    <div class="form-group">
+                                        <label>Image Upload</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="Img" name="Img" accept="image/*">
+                                                <label class="custom-file-label" for="Img">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="">Upload</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary" value="Submit">Modify</button>
                                 </div>
                             </form>
                             <!-- /.tab-content -->
@@ -255,9 +268,13 @@
                     <!-- /.nav-tabs-custom -->
                 </div>
                 <!-- /.col -->
+
             </div>
             <!-- /.row -->
+            <hr>
+
         </div><!-- /.container-fluid -->
+
     </div>
 </div>
 <br>

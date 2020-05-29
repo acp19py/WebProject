@@ -10,6 +10,7 @@ const commentSchema = new Schema({
 const comment = mongoose.model('Comment', commentSchema);
 
 const animalSchema = new Schema({
+
     Type: String,
     Gender: String,
     Kind: String,
@@ -24,5 +25,6 @@ const animalSchema = new Schema({
 });
 
 const animals = mongoose.model('animals',animalSchema);
+
 
 module.exports= animals;

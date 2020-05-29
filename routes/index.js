@@ -60,6 +60,9 @@ router.post('/create_animal',upload.single('myImage'), function(req, res) {
 router.get('/animal_detail', function(req, res, next) {
   animal.listAnimal(req,res);
 });
+router.post('/animal_detail', function(req, res) {
+  animal.update(req,res);
+});
 
 router.get('/thankyou_page', function(req, res,next) {
   adoptionforms.listUsers(req,res);

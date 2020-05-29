@@ -292,6 +292,32 @@ exports.create = function (req, res) {
     });
 };
 
+exports.update = function (req, res) {
+    var animalData = req.body;
+    var animalForm = new animals({
+
+        _id: animalData.AnimalID,
+        Type: animalData.Type,
+        Gender: animalData.Gender,
+        Kind: animalData.Kind,
+        Color: animalData.Color,
+        Age: animalData.Age,
+        Location: animalData.Location,
+        Status: animalData.Status,
+        Description: animalData.Description,
+        //img: req.file.path
+
+    });
+
+    animalForm.save(function (err, results) {
+        if (err)
+            res.status(500).send('Invalid data!');
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(animalForm));
+        // console.log(adoptionForms._id)
+    });
+};
+
 /*
 * According to the Id that is returned bu Ajax,get the name from database
 * */
@@ -308,3 +334,27 @@ exports.listAnimal = function (req, res) {
         });
     });
 };
+
+/*
+* Add comment
+
+
+exports.addComment = function (req,res) {
+    var commentData = req.body;
+    var date = new Date();
+    var commentForm = new Comment({
+
+        Content: commentData.Content,
+        Date: date,
+
+    });
+
+    commentForm.save(function (err, results) {
+        if (err)
+            res.status(500).send('Invalid data!');
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(commentForm));
+        // console.log(adoptionForms._id)
+    });
+};
+*/

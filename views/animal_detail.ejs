@@ -1,7 +1,8 @@
 <%- include('header') %>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">Animal Adoption</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -17,7 +18,8 @@
                 <a class="nav-link" href="/cats">Cats</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">More</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/create_animal">Release New Animal</a>
                     <a class="dropdown-item" href="#">Sign up</a>
@@ -47,12 +49,18 @@
                     <h3 class="profile-username text-center" style="text-transform:capitalize;"><%= animals.Type %></h3>
 
                     <p class="text-muted text-center" style="text-transform:capitalize;"><%= animals.Kind %></p>
-                    <a href="adoption_form?<%=animals._id%>" class="btn btn-success btn-block"><b>Adopt</b></a>
+                    <a href="adoption_form?<%= animals._id %>" class="btn btn-success btn-block"><b>Adopt</b></a>
                     <br>
                     <div class="row justify-content-between" style="padding-left: 1em;padding-right: 1em;">
-                    <a href="#" onclick="searchByType('<%=animals.Type%>')" type="button" class="badge badge-warning col-md-3" style="text-transform:capitalize;" ><%=animals.Type%></a>
-                    <a href="#" onclick="searchByColor('<%=animals.Color%>')" type="button" class="badge badge-secondary col-md-3" style="text-transform:capitalize;"><%=animals.Color%></a>
-                    <a href="#" onclick="searchByLocation('<%=animals.Location%>')" type="button" class="badge badge-info col-md-3" style="text-transform:capitalize;"><%=animals.Location%></a>
+                        <a href="#" onclick="searchByType('<%= animals.Type %>')" type="button"
+                           class="badge badge-warning col-md-3"
+                           style="text-transform:capitalize;"><%= animals.Type %></a>
+                        <a href="#" onclick="searchByColor('<%= animals.Color %>')" type="button"
+                           class="badge badge-secondary col-md-3"
+                           style="text-transform:capitalize;"><%= animals.Color %></a>
+                        <a href="#" onclick="searchByLocation('<%= animals.Location %>')" type="button"
+                           class="badge badge-info col-md-3"
+                           style="text-transform:capitalize;"><%= animals.Location %></a>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -70,7 +78,7 @@
 
                     <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals._id %>
-                     </p>
+                    </p>
 
                     <hr>
 
@@ -127,11 +135,11 @@
                     <strong>Vaccine</strong>
 
                     <p class="text-muted">
-                        <%if(animals.Vaccine){%>
+                        <% if(animals.Vaccine){ %>
                             Yes
-                        <%}else{%>
+                        <% }else{ %>
                             No
-                            <%}%>
+                        <% } %>
                     </p>
 
                     <hr>
@@ -139,7 +147,7 @@
                     <strong>Description</strong>
 
                     <p class="text-muted" style="text-transform:capitalize;">
-                        <%= animals.Description%>
+                        <%= animals.Description %>
                     </p>
 
                     <hr>
@@ -153,7 +161,8 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Comments</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Comments</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="#modify" data-toggle="tab">Modify</a></li>
                     </ul>
                 </div><!-- /.card-header -->
@@ -172,7 +181,9 @@
                                 <p>
                                     This dog is so cute. How could I adopt it?
                                     <span class="float-right">
-                                  <a data-toggle="collapse" href="#collapseExample" class="btn btn-info" style="margin-top: -2em" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                  <a data-toggle="collapse" href="#collapseExample" class="btn btn-info"
+                                     style="margin-top: -2em" role="button" aria-expanded="false"
+                                     aria-controls="collapseExample">
                                     Response
                                   </a>
                                   <div class="collapse" id="collapseExample">
@@ -237,17 +248,20 @@
                                         <textarea class="form-control" rows="5" id="description"></textarea>
                                     </div>
 
-                        <!-- /.tab-pane -->
+                                    <!-- /.tab-pane -->
+                                </div>
+                            </form>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
                     </div>
-                    <!-- /.tab-content -->
-                </div><!-- /.card-body -->
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
             </div>
-            <!-- /.nav-tabs-custom -->
-        </div>
-        <!-- /.col -->
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
-    <!-- /.row -->
-</div><!-- /.container-fluid -->
+</div>
 <br>
 <script src="/javascripts/animal_detail.js"></script>
 <%- include('footer') %>

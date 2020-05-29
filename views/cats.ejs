@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= animals[i].Type %></h5>
                     <p class="card-text"><%= animals[i].Gender %></p>
-                    <a href="#" class="btn btn-primary">See More Details</a>
+                    <a href="/animal_detail?id=<%=animals[i]._id%>" class="btn btn-primary">See More Details</a>
                 </div>
             </div>
         <% }%>

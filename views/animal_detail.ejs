@@ -31,6 +31,7 @@
     <div class="card-header">
         <h1 class="text-center">Animal Page</h1>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-3">
 
@@ -43,22 +44,21 @@
                              alt="Animal picture">
                     </div>
 
-                    <h3 class="profile-username text-center">Dog name</h3>
+                    <h3 class="profile-username text-center" style="text-transform:capitalize;"><%= animals.Type %></h3>
 
-                    <p class="text-muted text-center"><%= animals.Kind %></p>
-
-                    <ul class="list-group list-group-unbordered mb-3">
-                        <li class="list-group-item">
-                            <b>Followers</b> <a class="float-right">1,322</a>
-                        </li>
-                    </ul>
-
-                    <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                    <p class="text-muted text-center" style="text-transform:capitalize;"><%= animals.Kind %></p>
+                    <a href="adoption_form?<%=animals._id%>" class="btn btn-success btn-block"><b>Adopt</b></a>
+                    <br>
+                    <div class="row justify-content-between" style="padding-left: 1em;padding-right: 1em;">
+                    <a href="#" onclick="searchByType('<%=animals.Type%>')" type="button" class="badge badge-warning col-md-3" style="text-transform:capitalize;" ><%=animals.Type%></a>
+                    <a href="#" onclick="searchByColor('<%=animals.Color%>')" type="button" class="badge badge-secondary col-md-3" style="text-transform:capitalize;"><%=animals.Color%></a>
+                    <a href="#" onclick="searchByLocation('<%=animals.Location%>')" type="button" class="badge badge-info col-md-3" style="text-transform:capitalize;"><%=animals.Location%></a>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
+            <br>
             <!-- About Me Box -->
             <div class="card card-primary">
                 <div class="card-header">
@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <strong>Animal ID</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals._id %>
                      </p>
 
@@ -76,7 +76,7 @@
 
                     <strong>Animal Type</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Kind %>
                     </p>
 
@@ -84,7 +84,7 @@
 
                     <strong>Gender</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Gender %>
                     </p>
 
@@ -92,7 +92,7 @@
 
                     <strong>Animal Kind</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Kind %>
                     </p>
 
@@ -100,7 +100,7 @@
 
                     <strong>Color</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Color %>
                     </p>
 
@@ -108,7 +108,7 @@
 
                     <strong>Age</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Age %>
                     </p>
 
@@ -116,24 +116,29 @@
 
                     <strong>Location</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Location %>
                     </p>
 
                     <hr>
 
-                    <strong>Status</strong>
+                    <hr>
+
+                    <strong>Vaccine</strong>
 
                     <p class="text-muted">
-                        <%= animals.Status %>
+                        <%if(animals.Vaccine){%>
+                            Yes
+                        <%}else{%>
+                            No
+                            <%}%>
                     </p>
 
                     <hr>
 
-
                     <strong>Description</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" style="text-transform:capitalize;">
                         <%= animals.Description%>
                     </p>
 
@@ -148,7 +153,7 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Comments</a></li>
                         <li class="nav-item"><a class="nav-link" href="#modify" data-toggle="tab">Modify</a></li>
                     </ul>
                 </div><!-- /.card-header -->
@@ -165,36 +170,22 @@
                                 </div>
                                 <!-- /.user-block -->
                                 <p>
-                                    This dog is so cute. How could I adopt it?<span class="float-right">
-                                  <a href="#" >
+                                    This dog is so cute. How could I adopt it?
+                                    <span class="float-right">
+                                  <a data-toggle="collapse" href="#collapseExample" class="btn btn-info" style="margin-top: -2em" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     Response
                                   </a>
-                                        </span>
+                                  <div class="collapse" id="collapseExample">
+                                  <form>
+                                  <div class="form-group">
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                      <br>
+                                      <button class="btn btn-primary float-right">Submit</button>
+                                  </div>
+                                  </form>
+                                  </div>
+                                  </span>
                                 </p>
-
-
-                                <hr>
-                            </div>
-                            <!-- /.post -->
-
-                            <!-- Post -->
-                            <div class="post">
-                                <div class="user-block">
-                                        <span class="username">
-                                          <a href="#">Johnson</a>
-                                        </span>
-                                    <span class="description"> commented - 5:30 PM today</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    <%= animals.Comment%><span class="float-right">
-                                  <a href="#" >
-                                    Response
-                                  </a>
-                                        </span>
-                                </p>
-
-                                <hr>
                             </div>
                             <!-- /.post -->
                         </div>
@@ -246,30 +237,6 @@
                                         <textarea class="form-control" rows="5" id="description"></textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Image Upload</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
-
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->
@@ -282,4 +249,5 @@
     <!-- /.row -->
 </div><!-- /.container-fluid -->
 <br>
+<script src="/javascripts/animal_detail.js"></script>
 <%- include('footer') %>

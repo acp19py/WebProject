@@ -30,14 +30,15 @@ console.log(data);
 }
 
 function onSubmit() {
+    console.log(window.location.href)
+    const url = window.location.href;
+    const id = url.substring(url.lastIndexOf('?') + 1, url.length);
     var formArray= $("form").serializeArray();
     var data={};
     for (index in formArray){
         data[formArray[index].name]= formArray[index].value;
     }
-    console.log(data);
-    // const data = JSON.stringify($(this).serializeArray());
-    sendAjaxQuery('/adoption_form', data);
+    sendAjaxQuery('/adoption_form?id='+id, data);
     event.preventDefault();
 }
 

@@ -4,13 +4,15 @@ const adoptionforms = require('../models/adoptionforms');
 var path = require('path');
 
 /**
-*   write date to Adoptionform database
+*   write data to adoptionforms database
 *   Data is edited by user input,Browser send request using JSON data
 *
 * */
 exports.create = function (req, res) {
     var userData = req.body;
+    var id = req.query.id
     var adoptionForms = new adoptionforms({
+        AnimalID: id,
         Name: userData.Name,
         Age: userData.Age,
         Job: userData.Job,

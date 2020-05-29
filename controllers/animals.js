@@ -1,14 +1,16 @@
 var bodyParser = require("body-parser");
-var req = require('request');
+var reqest = require('request');
 const animals = require('../models/animals');
 var path = require('path');
 
 
-
+/**
+ * This function is used to search animals by using the user input keyword.
+ * Analysis the input keyword, then find animal data in the animals database that fit the keywords.
+ */
 exports.searchResult = function (req, res) {
     const userInput = req.query.userInput;
     const searchData = JSON.parse(userInput)
-    console.log(searchData)
     if (searchData.AnimalColor !== "" && searchData.AnimalType !== "" && searchData.AnimalGender !== "" && searchData.AnimalLocation !== "") {
         animals.find({
             Type: searchData.AnimalType,
@@ -227,6 +229,10 @@ exports.searchResult = function (req, res) {
     }
 }
 
+
+/**
+ * This function is used to
+ */
 exports.searchAnimal = function(req,res){
     const userInput = req.body;
     res.send(JSON.stringify(userInput))
@@ -289,8 +295,8 @@ exports.create = function (req, res) {
 * According to the Id that is returned bu Ajax,get the name from database
 * */
 exports.listAnimal = function (req, res) {
-    //const id = req.query.id;
-    const id = "5ecabd7c54274d69684e1347";
+    const id = req.query.id;
+   // const id = "5ecabd7c54274d69684e1347";
     animals.find({_id:id}, function (err, animals) {
         if (err) {
             return res.send(500, err);
